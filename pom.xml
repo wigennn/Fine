@@ -6,6 +6,7 @@
     <modules>
         <module>fine-center</module>
         <module>fine-monitor</module>
+        <module>fine-flyway</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
