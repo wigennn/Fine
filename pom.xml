@@ -5,6 +5,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>fine-center</module>
+        <module>fine-monitor</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
