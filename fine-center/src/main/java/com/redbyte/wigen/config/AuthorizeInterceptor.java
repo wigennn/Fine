@@ -30,7 +30,7 @@ public class AuthorizeInterceptor implements HandlerInterceptor {
         }
 
         if (StringUtils.isEmpty(token)) {
-            unlogin(response);
+            unlogin(request, response);
             return false;
         }
 
@@ -39,8 +39,8 @@ public class AuthorizeInterceptor implements HandlerInterceptor {
         return true;
     }
 
-    private void unlogin(HttpServletResponse response) throws IOException {
-        response.sendRedirect("http://localhost:8080/login");
+    private void unlogin(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        response.sendRedirect(request.getContextPath() + "/login");
     }
 
 }
