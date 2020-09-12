@@ -1,4 +1,4 @@
-package com.redbyte.wigen.config.security;
+package com.redbyte.wigen.config;
 
 import org.springframework.util.StringUtils;
 import org.springframework.web.servlet.HandlerInterceptor;
