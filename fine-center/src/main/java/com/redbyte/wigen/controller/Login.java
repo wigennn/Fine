@@ -1,9 +1,11 @@
 package com.redbyte.wigen.controller;
 
+import com.redbyte.wigen.utils.JWTUtil;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
@@ -13,10 +15,11 @@ import javax.servlet.http.HttpServletResponse;
 public class Login {
 
     @RequestMapping("/login")
-    public String login(HttpServletResponse response) {
+    public String login(HttpServletRequest request, HttpServletResponse response) {
 
-        Cookie cookie = new Cookie("token", "yes");
+        String token = JWTUtil.createToken("wigen");
+        Cookie cookie = new Cookie("token", token);
         response.addCookie(cookie);
-        return "login";
+        return "login success";
     }
 }

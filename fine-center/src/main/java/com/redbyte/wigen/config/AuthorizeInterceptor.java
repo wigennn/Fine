@@ -1,5 +1,6 @@
 package com.redbyte.wigen.config;
 
+import com.redbyte.wigen.utils.JWTUtil;
 import org.springframework.util.StringUtils;
 import org.springframework.web.servlet.HandlerInterceptor;
 
@@ -22,6 +23,11 @@ public class AuthorizeInterceptor implements HandlerInterceptor {
 
         Cookie[] cookies = request.getCookies();
 
+        if (cookies == null) {
+            unlogin(request, response);
+            return false;
+        }
+
         String token = "";
         for (Cookie cookie : cookies) {
             if ("token".equals(cookie.getName())) {
@@ -35,6 +41,11 @@ public class AuthorizeInterceptor implements HandlerInterceptor {
         }
 
         // 验证token正确性
+        boolean bool = JWTUtil.verifyToken("wigen", token);
+        if (!bool) {
+            unlogin(request, response);
+            return false;
+        }
 
         return true;
     }
