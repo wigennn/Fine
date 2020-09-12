@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
@@ -16,14 +15,13 @@ import javax.servlet.http.HttpServletResponse;
 public class Login {
 
     @RequestMapping("/login")
-    public String login(HttpServletRequest request, HttpServletResponse response) {
+    public String login(HttpServletResponse response) {
 
-        String token = JWTUtil.createToken("wigen");
-        Cookie cookie = new Cookie(JWTConstant.TOKEN, token);
-        Cookie cookie1 = new Cookie(JWTConstant.USER_NAME, "wigen");
+        String userName = "wigen";
+        String token = JWTUtil.createToken(userName);
 
-        response.addCookie(cookie);
-        response.addCookie(cookie1);
+        response.addCookie(new Cookie(JWTConstant.TOKEN, token));
+        response.addCookie(new Cookie(JWTConstant.USER_NAME, userName));
         return "login success";
     }
 }
