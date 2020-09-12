@@ -6,6 +6,7 @@ import org.springframework.web.servlet.HandlerInterceptor;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 
 /**
  * <p>
@@ -29,13 +30,17 @@ public class AuthorizeInterceptor implements HandlerInterceptor {
         }
 
         if (StringUtils.isEmpty(token)) {
+            unlogin(response);
             return false;
         }
 
         // 验证token正确性
 
-
         return true;
+    }
+
+    private void unlogin(HttpServletResponse response) throws IOException {
+        response.sendRedirect("http://localhost:8080/login");
     }
 
 }
