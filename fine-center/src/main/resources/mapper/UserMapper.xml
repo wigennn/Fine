@@ -8,6 +8,7 @@
         USER
     WHERE
         user_name = #{userName}
+    OR phone = #{userName}
     AND PASSWORD = #{password}
   </select>
 

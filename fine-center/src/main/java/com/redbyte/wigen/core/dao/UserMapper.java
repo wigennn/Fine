@@ -12,6 +12,6 @@ public interface UserMapper {
 
     void registerUser(User user);
 
-    @Insert("select count(1) from user where user_name=#{userName}")
+    @Insert("select count(1) from user where user_name=#{userName} or phone=#{userName}")
     int isDuplicateUserName(@Param("userName") String userName);
 }
