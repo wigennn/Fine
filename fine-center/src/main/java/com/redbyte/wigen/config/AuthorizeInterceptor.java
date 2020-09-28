@@ -1,7 +1,7 @@
 package com.redbyte.wigen.config;
 
 import com.redbyte.wigen.common.JWTConstant;
-import com.redbyte.wigen.utils.JWTUtil;
+import com.redbyte.wigen.config.security.JWTUtil;
 import org.springframework.util.StringUtils;
 import org.springframework.web.servlet.HandlerInterceptor;
 

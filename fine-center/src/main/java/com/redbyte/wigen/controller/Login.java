@@ -1,7 +1,7 @@
 package com.redbyte.wigen.controller;
 
 import com.redbyte.wigen.common.JWTConstant;
-import com.redbyte.wigen.utils.JWTUtil;
+import com.redbyte.wigen.config.security.JWTUtil;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
