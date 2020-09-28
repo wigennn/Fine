@@ -1,4 +1,4 @@
-package com.redbyte.wigen.config;
+package com.redbyte.wigen.config.security;
 
 import com.redbyte.wigen.common.JWTConstant;
 import com.redbyte.wigen.config.security.JWTUtil;
@@ -20,7 +20,9 @@ import java.io.IOException;
 public class AuthorizeInterceptor implements HandlerInterceptor {
 
     @Override
-    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
+    public boolean preHandle(HttpServletRequest request,
+                             HttpServletResponse response,
+                             Object handler) throws Exception {
 
         Cookie[] cookies = request.getCookies();
 
@@ -29,8 +31,8 @@ public class AuthorizeInterceptor implements HandlerInterceptor {
             return false;
         }
 
-        String token = "";
-        String userName = "";
+        String token = null;
+        String userName = null;
         for (Cookie cookie : cookies) {
             if (JWTConstant.TOKEN.equals(cookie.getName())) {
                 token = cookie.getValue();
@@ -46,7 +48,7 @@ public class AuthorizeInterceptor implements HandlerInterceptor {
         }
 
         // 验证token正确性
-        boolean bool = JWTUtil.verifyToken(userName, token);
+        boolean bool = JWTUtil.verifyToken(userName, token, response);
         if (!bool) {
             unlogin(request, response);
             return false;
@@ -56,7 +58,7 @@ public class AuthorizeInterceptor implements HandlerInterceptor {
     }
 
     private void unlogin(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        response.sendRedirect(request.getContextPath() + "/login");
+        response.sendRedirect(request.getContextPath() + "/unlogin");
     }
 
 }

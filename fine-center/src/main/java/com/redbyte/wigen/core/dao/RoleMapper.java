@@ -1,9 +1,7 @@
 package com.redbyte.wigen.core.dao;
 
-import com.redbyte.wigen.core.domain.entity.Role;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface RoleMapper {
-    int insert(Role record);
-
-    int insertSelective(Role record);
 }
