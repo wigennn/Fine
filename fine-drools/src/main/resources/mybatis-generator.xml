@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
 <generatorConfiguration>
     <!--驱动包的路径-->
-    <classPathEntry location="E:\mvn_repository\mysql\mysql-connector-java\5.1.34\mysql-connector-java-5.1.34.jar"/>
+    <classPathEntry location="G:\mvn_repository\mysql\mysql-connector-java\5.1.34\mysql-connector-java-5.1.34.jar"/>
     <context id="DB2Tables" targetRuntime="MyBatis3">
         <!--注释-->
         <commentGenerator>
@@ -13,7 +13,7 @@
         </commentGenerator>
         <!--数据库连接-->
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-                        connectionURL="jdbc:mysql://127.0.0.1:3306/fine?zeroDateTimeBehavior=convertToNull&amp;
+                        connectionURL="jdbc:mysql://127.0.0.1:3306/drools?zeroDateTimeBehavior=convertToNull&amp;
 　　　　　　　　　　　　　　　　　　　　　　　　autoReconnect=true&amp;useUnicode=true&amp;characterEncoding=utf-8"
                         userId="root"
                         password="root"/>
@@ -44,7 +44,7 @@
         </javaClientGenerator>
 
         <!--生成与表对应的类名-->
-        <table schema="fine" tableName="role" domainObjectName="Role"
+        <table schema="drools" tableName="rule_info" domainObjectName="RuleInfoEntity"
                enableInsert="true" enableSelectByExample="false"
                enableDeleteByPrimaryKey="false" enableDeleteByExample="false"
                enableCountByExample="false" enableUpdateByExample="false"

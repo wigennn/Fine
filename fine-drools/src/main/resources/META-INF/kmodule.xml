@@ -4,7 +4,7 @@
         <ksession name="all-rules"/>
     </kbase>
 
-    <kbase default="false" name="rule-A">
-        <ksession name="rule-A" />
-    </kbase>
+    <!--<kbase default="false" name="rule-A">-->
+        <!--<ksession name="rule-A" />-->
+    <!--</kbase>-->
 </kmodule>
