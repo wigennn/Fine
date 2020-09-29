@@ -1,5 +1,6 @@
 package com.redbyte.wigen.controller;
 
+import com.redbyte.wigen.common.HttpResult;
 import com.redbyte.wigen.config.security.JWTUtil;
 import com.redbyte.wigen.core.dao.UserMapper;
 import com.redbyte.wigen.core.domain.dto.LoginUser;
@@ -24,7 +25,7 @@ public class LoginController {
     private UserMapper userMapper;
 
     @RequestMapping("/login")
-    public String login(@RequestBody LoginUser loginUser, HttpServletResponse response) throws Exception {
+    public HttpResult login(@RequestBody LoginUser loginUser, HttpServletResponse response) throws Exception {
 
         String userName = loginUser.getUserName();
         loginUser.setPassword(MD5Util.encrypt(loginUser.getPassword()));
@@ -34,27 +35,27 @@ public class LoginController {
             JWTUtil.updateHttpResp(userName, token, response);
         } else {
             log.info("loginUser:{}", loginUser.toString());
-            return "登陆名用户密码错误";
+            return HttpResult.success("登陆名用户密码错误");
         }
-        return "login success";
+        return HttpResult.success("login success");
     }
 
     @RequestMapping("/register")
-    public String register(@RequestBody User user) throws Exception {
+    public HttpResult register(@RequestBody User user) throws Exception {
         // 校验用户名是否存在
         int count = userMapper.isDuplicateUserName(user.getUserName());
         if (count > 0) {
-            return "该名称已存在";
+            return HttpResult.success("该名称已存在");
         }
         String pwd = user.getPassword();
         user.setPassword(MD5Util.encrypt(pwd));
         userMapper.registerUser(user);
 
-        return "注册成功";
+        return HttpResult.success("注册成功");
     }
 
     @RequestMapping("/unlogin")
-    public String unlogin() {
-        return "unlogin";
+    public HttpResult unlogin() {
+        return HttpResult.success("unlogin");
     }
 }

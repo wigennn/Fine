@@ -1,7 +1,7 @@
 package com.redbyte.wigen.config.security;
 
 import com.redbyte.wigen.common.JWTConstant;
-import com.redbyte.wigen.config.security.JWTUtil;
+import org.slf4j.MDC;
 import org.springframework.util.StringUtils;
 import org.springframework.web.servlet.HandlerInterceptor;
 
@@ -9,6 +9,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.UUID;
 
 /**
  * <p>
@@ -23,6 +24,8 @@ public class AuthorizeInterceptor implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest request,
                              HttpServletResponse response,
                              Object handler) throws Exception {
+
+        MDC.put("traceId", UUID.randomUUID().toString().replaceAll("-", ""));
 
         Cookie[] cookies = request.getCookies();
 
