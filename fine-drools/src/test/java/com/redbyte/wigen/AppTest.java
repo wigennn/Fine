@@ -35,11 +35,9 @@ public class AppTest {
         Result result = new Result();
         kieSession.setGlobal("res", result);
         int count = kieSession.fireAllRules();
-
         System.out.println("Fire rules: " + count);
         System.out.println("决策结果(Drools): " + result);
 
         kieSession.dispose();
-
     }
 }

@@ -24,6 +24,8 @@ public class Result {
     }
 
     public Result setResult(String code, String info) {
-        return new Result(code, info);
+        this.setCode(code);
+        this.setInfo(info);
+        return this;
     }
 }
