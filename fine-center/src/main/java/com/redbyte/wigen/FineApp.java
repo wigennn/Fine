@@ -9,8 +9,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  */
 @MapperScan({"com.redbyte.wigen.core.dao"})
 @SpringBootApplication
-public class App {
+public class FineApp {
     public static void main(String[] args) {
-        SpringApplication.run(App.class, args);
+        SpringApplication.run(FineApp.class, args);
     }
 }

@@ -21,11 +21,8 @@ import java.util.UUID;
 public class AuthorizeInterceptor implements HandlerInterceptor {
 
     @Override
-    public boolean preHandle(HttpServletRequest request,
-                             HttpServletResponse response,
+    public boolean preHandle(HttpServletRequest request,HttpServletResponse response,
                              Object handler) throws Exception {
-
-        MDC.put("traceId", UUID.randomUUID().toString().replaceAll("-", ""));
 
         Cookie[] cookies = request.getCookies();
 

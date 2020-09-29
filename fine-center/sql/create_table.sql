@@ -21,3 +21,5 @@ create table `role`(
   `update_time` datetime DEFAULT CURRENT_TIMESTAMP COMMENT '更新时间',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=UTF8 COMMENT='角色表';
+
+alter table user add unique key `unique_idx_user`(`user_name`,`phone`);

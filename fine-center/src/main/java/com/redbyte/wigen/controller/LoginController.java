@@ -42,15 +42,17 @@ public class LoginController {
 
     @RequestMapping("/register")
     public HttpResult register(@RequestBody User user) throws Exception {
+
         // 校验用户名是否存在
         int count = userMapper.isDuplicateUserName(user.getUserName());
         if (count > 0) {
-            return HttpResult.success("该名称已存在");
+            return HttpResult.success("用户名已存在");
         }
+
+        // 注册
         String pwd = user.getPassword();
         user.setPassword(MD5Util.encrypt(pwd));
         userMapper.registerUser(user);
-
         return HttpResult.success("注册成功");
     }
 
