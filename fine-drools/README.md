@@ -9,3 +9,6 @@
 ## drools实践demo
 
 ## drools动态规则实现
+
+## FAQ
+> https://my.oschina.net/loujinhe/blog/3048254?tdsourcetag=s_pctim_aiomsg
