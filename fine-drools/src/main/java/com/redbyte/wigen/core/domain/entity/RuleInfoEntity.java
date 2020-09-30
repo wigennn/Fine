@@ -1,10 +1,7 @@
 package com.redbyte.wigen.core.domain.entity;
 
-import lombok.Data;
-
 import java.util.Date;
 
-@Data
 public class RuleInfoEntity {
     private Long id;
 
